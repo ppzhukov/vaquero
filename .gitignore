@@ -4,10 +4,10 @@
 **/*.vmdk
 *.tfstate
 *.tfstate.*
-crash.log
+**crash.log
+**/*.tfvars
 !**example.tfvars
-*.tfvars
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
+**override.tf
+**override.tf.json
+**/*_override.tf
+**/*_override.tf.json
