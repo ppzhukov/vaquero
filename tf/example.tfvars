@@ -2,11 +2,11 @@
     datacenter         = "DC01_Local"
     datastore          = "vhost01_Datastore_02"
     cluster            = "Cluster"
-    host               = "172.29.192.21"
+    host               = "172.17.0.1"
     dvs                = "DSwitch 01"
     dpg                = "DPG_Ranchers_TF_LAB_VLAN1302"
     dpg_vlan_id        = "1302"
-    wan                = "DPG_Zhukov_Lab_VLAN13"
+    wan                = "DPG_WAN"
     folder             = "rancher/rancher-tf"
 }
 
