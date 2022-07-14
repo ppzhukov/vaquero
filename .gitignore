@@ -1,11 +1,11 @@
 # Local .terraform directories
-**/.terraform/*
-**/.terraform.lock.hcl
+**.terraform*
+**.terraform.lock.hcl
 **/*.vmdk
 *.tfstate
 *.tfstate.*
 crash.log
-!**/example.tfvars
+!**example.tfvars
 *.tfvars
 override.tf
 override.tf.json
