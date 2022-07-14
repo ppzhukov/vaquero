@@ -7,7 +7,7 @@ provider "vsphere" {
 }
 
 module "get_ids" {
-    source        = "../modules/get_ids"
+    source        = "../terraform-vsphere-vaquero-modules/get_ids"
     vsphere_environment = var.vsphere_environment
 }
 
