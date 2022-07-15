@@ -32,6 +32,8 @@ mysql:
 #    - group: root
 #    - mode: 644
 #    - names:
+#       - /etc/rmt/ssl/rmt-ca.cnf:
+#         - source: salt://files/rmt-ca.cnf
 #       - /etc/rmt/ssl/rmt-server.cnf:
 #         - source: salt://files/rmt-server.cnf
 #       - /etc/rmt.conf

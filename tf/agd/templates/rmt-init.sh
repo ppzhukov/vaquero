@@ -1,9 +1,16 @@
-echo "SET PASSWORD FOR root@${hostname}=PASSWORD(\"${password}\");" | mysql -u root < #{command_file} 2>/dev/null
+#!/bin/sh
+mysql -u root -p <<EOFF
+SET PASSWORD FOR root@${hostname}=PASSWORD(\"${password}\");
+EOFF
+
+mysql -u root -p <<EOFF
+GRANT ALL PRIVILEGES ON \`rmt%\`.* TO rmt@localhost IDENTIFIED BY 'rmt';
+FLUSH PRIVILEGES;
+EOFF
 
 CA_PWD=${password}
 
 openssl genrsa -aes256 -passout env:CA_PWD -out ./a/rmt-ca.key 2048
-
 openssl req -x509 -new -nodes -key /etc/rmt/ssl/rmt-ca.key -sha256 -days 1825 -out /etc/rmt/ssl/rmt-ca.crt \
  -passin env:CA_PWD -config /etc/rmt/ssl/rmt-ca.cnf
 
