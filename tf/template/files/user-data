@@ -1,7 +1,4 @@
 #cloud-config
-users:
-  - name: root
-    password: $6$rounds=4096$3kPhNxe8shfpHgSD$ew3qmFwGmKTW502gGgp8X7Pz8grhkL4N3I/n9bUpl7xckfwKYwkgGlGZP7VOR2DmswcxhPlhRrVxKUSmnSJIC.
 runcmd:
    - cloud-init clean
    - SUSEConnect -d

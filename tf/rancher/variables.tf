@@ -51,32 +51,17 @@ variable "ssh_public_key" {
   sensitive = true
 }
 
-variable "mirroring_credentials" {
+/*variable "mirroring_credentials" {
   type = object({
+    server = string
     user = string
     password = string
   })
   sensitive = true
-}
+}*/
 
 variable template {
   type = object({
     folder = string
   })
-}
-
-variable password {
-  description = "MYSQL & CA password"
-  type =  string
-  default = "linux"
-  sensitive   = true
-}
-
-variable "registry" {
-  description = "SLES Registry Key"
-  type = object({
-    key   = string
-    email = string
-  })
-  sensitive   = true
 }

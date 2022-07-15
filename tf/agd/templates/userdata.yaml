@@ -6,3 +6,33 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     groups: sudo
     shell: /bin/bash
+
+write_files:
+  - path: /srv/salt.zip 
+    encoding: b64
+    permissions: '0644'
+    owner: root:salt
+    content: ${salt_zip}
+
+  - path: /srv/salt/files/rmt-server.cnf
+    encoding: b64
+    permissions: '0644'
+    owner: root:salt
+    content: ${rmt_server_cnf}
+
+  - path: /srv/salt/registration.sls
+    permissions: '0644'
+    owner: root:salt
+    content: |
+        registration_sles:
+            cmd.run:
+              - name: |
+                  if [ "$(echo $(SUSEConnect --status-text | grep -A 2 '(SLES/15.4/x86_64)' | tail -1))" = "Not Registered" ]
+                    then
+                      ping updates.suse.com -c 10
+                      ${registration_cmd} > /var/log/registration.log 2>&1
+                      zypper ref
+                  fi
+
+runcmd:
+${runcmd_agd}

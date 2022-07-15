@@ -7,5 +7,6 @@ network:
     eth0:
       addresses:
         - ${ip_address}/${netmask}
+      gateway4: ${gateway}
       nameservers:
         addresses: ${nameservers}

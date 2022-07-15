@@ -36,6 +36,10 @@ resource "vsphere_virtual_machine" "template" {
   num_cpus = 1
   memory   = 1024
 
+  cpu_hot_add_enabled  = true
+  cpu_hot_remove_enabled  = true
+  memory_hot_add_enabled  = true
+
   network_interface {
     network_id = data.vsphere_network.network.id
     adapter_type = "vmxnet3"
@@ -51,7 +55,6 @@ resource "vsphere_virtual_machine" "template" {
     attach             = "true"
     datastore_id       = module.get_ids.vsphere_ids.datastore_id
     path               = "/${var.template_name}-template/${var.template.vmdk_file_name}"
-    eagerly_scrub      = true
   }
   guest_id = "sles12_64Guest"
   firmware = "efi" # efi/bios

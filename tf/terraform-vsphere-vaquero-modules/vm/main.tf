@@ -7,7 +7,9 @@ resource "vsphere_virtual_machine" "vm" {
 
   num_cpus = var.vm_parameters.cpu
   memory   = var.vm_parameters.memory
-
+  cpu_hot_add_enabled  = true
+  cpu_hot_remove_enabled  = true
+  memory_hot_add_enabled  = true
 
   dynamic "network_interface" {
     for_each = var.vm_parameters.network_map

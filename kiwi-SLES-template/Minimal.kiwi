@@ -12,9 +12,6 @@
     <profiles>
         <profile name="VMware" description="Minimal for VMware" arch="x86_64"/>
     </profiles>
-    <users group="root">
-        <user password="$1$suse$8xZqp834AVBxSB.CQ0IEf." home="/root" name="root"/>
-    </users>
     <preferences profiles="VMware">
         <version>15.4.0</version>
         <packagemanager>zypper</packagemanager>

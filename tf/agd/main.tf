@@ -7,7 +7,7 @@ provider "vsphere" {
 }
 
 module "get_ids" {
-    source        = "../modules/get_ids"
+    source        = "../terraform-vsphere-vaquero-modules/get_ids"
     vsphere_environment = var.vsphere_environment
 }
 
@@ -40,7 +40,7 @@ stend_environment = {
 module "agd" {
   depends_on = [module.get_ids]
 
-  source        = "../modules/vm"
+  source        = "../terraform-vsphere-vaquero-modules/vm"
 
   vm_common_parameters = local.vm_common_parameters
   stend_environment = local.stend_environment
@@ -49,8 +49,8 @@ module "agd" {
     name             = "agd"
     enable_wan       = true
     disk_size        = 240
-    cpu              = 1
-    memory           = 1024
+    cpu              = 2
+    memory           = 2048
     metadata         = data.template_file.metadata_agd.rendered
     userdata         = data.template_file.userdata_agd.rendered
     network_map      = [ module.get_ids.vsphere_ids.wan_id, module.get_ids.vsphere_ids.wan_id ]

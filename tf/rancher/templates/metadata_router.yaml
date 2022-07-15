@@ -9,3 +9,5 @@ network:
         - ${ip_address}/${netmask}
       nameservers:
         addresses: ${nameservers}
+    eth1:
+      dhcp4: true

@@ -1,1 +1,1 @@
-output "id" { value = resorce.vm.id }
+output "id" { value = resource.vsphere_virtual_machine.vm.id }
