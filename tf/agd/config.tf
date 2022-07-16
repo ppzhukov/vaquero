@@ -1,13 +1,5 @@
 locals {
-  hostname = "agd.stend.test"
-
-  nameservers = [
-    var.nodes_settings.router_ip,
-    "8.8.8.8"
-  ]
-
   registration_cmd =  "SUSEConnect -e ${var.registry.email} -r ${var.registry.key}"
-
   runcmd_agd = <<EOT
    - unzip -o /srv/salt.zip -d /srv/
    - salt-call --local state.apply
@@ -19,15 +11,15 @@ EOT
 data template_file "rmt_server_cnf" {
   template = file("${path.module}/templates/rmt-server.cnf")
   vars = {
-    hostname    = local.hostname
-    ip_address  = var.nodes_settings.agd_ip
+    hostname    = var.agd.hostname
+    ip_address  = var.agd.ip
   }
 }
 data template_file "rmt_init" {
   template = file("${path.module}/templates/rmt-init.sh")
   vars = {
-    hostname    = local.hostname
-    password    = var.nodes_settings.agd_ip
+    hostname    = var.agd.hostname
+    password    = var.agd.password
   }
 }
 
@@ -36,7 +28,7 @@ data template_file "rmt_conf" {
   vars = {
     scc_username    = var.mirroring_credentials.user
     scc_password    = var.mirroring_credentials.password
-    password        = var.nodes_settings.agd_ip
+    password        = var.agd.password
   }
 }
 
@@ -85,9 +77,10 @@ data template_file "metadata_agd" {
   template = file("${path.module}/templates/metadata.yaml")
   vars = {
     hostname    = local.hostname
-    ip_address  = var.nodes_settings.agd_ip
-    netmask     = var.nodes_settings.netmask
-    nameservers = jsonencode(local.nameservers)
+    ip_address  = var.agd.ip
+    netmask     = var.agd.netmask
+    dhcp4       = var.agd.dhcp4
+    nameservers = jsonencode(var.agd.nameservers)
   }
 }
 

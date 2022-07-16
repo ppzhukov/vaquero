@@ -65,13 +65,14 @@ variable template {
   })
 }
 
-variable password {
-  description = "MYSQL & CA password"
-  type =  string
-  default = "linux"
+variable "agd" {
+  description = "AGD data"
+  type = object({
+    password  = string
+    hostname  = string
+  })
   sensitive   = true
 }
-
 variable "registry" {
   description = "SLES Registry Key"
   type = object({

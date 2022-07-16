@@ -1,4 +1,44 @@
 
+1. Install Terraform cli
+2. Configure Terraform Mirror for Terraform Registry if you need/.
+
+
+3. Export secret variable
+  export TF_VAR_ssh_public_key="ssh-rsa base64_data user@host-name"
+  export TF_VAR_registry='{ key="AA-BB-CC", email="my_name@my-domain.com" }'
+  export TF_VAR_vsphere_credetial='{ user="administrator", password="password", server="vsphere.stend.test" }'
+  export TF_VAR_mirroring_credentials='{ user="12345678", password="secret"}'
+  export TF_VAR_password="linux"
+4. Run
+```bash
+cd ./tf
+terraform -chdir=./template init
+terraform -chdir=./template plan -var-file ../your.tfvars
+terraform -chdir=./template apply -auto-approve -var-file ../your.tfvars
+```
+5. Wait creating VM and automatic switch off.
+6. Run
+```bash
+cd ./tf
+terraform -chdir=./agd init
+terraform -chdir=./agd plan -var-file ../your.tfvars
+terraform -chdir=./agd apply -auto-approve -var-file ../your.tfvars
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 
 
 - [Main](#main)
     - [Using as standalone Terraform configuration](#using-as-standalone-terraform-configuration)

@@ -5,6 +5,7 @@ network:
   version: 2
   ethernets:
     eth0:
+      dhcp4: ${dhcp4}
       addresses:
         - ${ip_address}/${netmask}
       nameservers:
