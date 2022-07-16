@@ -1,7 +1,7 @@
 locals {
   registration_cmd =  "SUSEConnect -e ${var.registry.email} -r ${var.registry.key}"
   runcmd_agd = <<EOT
-   - unzip -o /srv/salt.zip -d /srv/
+   - unzip -o /srv/salt.zip -d /srv/salt/
    - salt-call --local state.apply
 EOT
 
