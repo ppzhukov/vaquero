@@ -19,6 +19,16 @@ write_files:
     permissions: '0644'
     owner: root:salt
     content: ${rmt_server_cnf}
+  - path: /srv/salt/files/rmt.conf
+    encoding: b64
+    permissions: '0644'
+    owner: root:salt
+    content: ${rmt_conf}
+  - path: /srv/salt/files/rmt-init.sh
+    encoding: b64
+    permissions: '0644'
+    owner: root:salt
+    content: ${rmt_init}
 
   - path: /srv/salt/registration.sls
     permissions: '0644'

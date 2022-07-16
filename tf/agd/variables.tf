@@ -21,11 +21,6 @@ variable "vsphere_environment" {
   })
 }
 
-variable "template_name" {
-  description = "Node template name"
-  type = string
-}
-
 variable "rancher_nodes_ip" {
   type = list(string)
   description = "Rancher Nodes IP adress"
@@ -37,7 +32,6 @@ variable "nodes_settings" {
     vm_node_name = string
     router_ip = string
     master_ip = string
-    agd_ip = string
     username = string
     domain = string
     netmask = string
@@ -62,6 +56,7 @@ variable "mirroring_credentials" {
 variable template {
   type = object({
     folder = string
+    template_name = string
   })
 }
 
@@ -70,9 +65,9 @@ variable "agd" {
   type = object({
     password  = string
     hostname  = string
-    dhcp4    = string
     ip       = string
     netmask  = string
+    gateway  = string
     nameservers = list(string)
   })
   sensitive   = true

@@ -21,15 +21,11 @@ variable "vsphere_environment" {
   })
 }
 
-variable "template_name" {
-  description = "Node template name"
-  type = string
-}
-
 variable template {
   type = object({
     vmdk_file_name = string
     network_name = string
     folder = string
+    template_name = string
   })
 }

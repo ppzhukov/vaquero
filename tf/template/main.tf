@@ -21,13 +21,13 @@ resource "vsphere_file" "sles_vmdk_upload" {
   datacenter         = var.vsphere_environment.datacenter
   datastore          = var.vsphere_environment.datastore
   source_file        = "${path.module}/files/${var.template.vmdk_file_name}"
-  destination_file   = "/${var.template_name}-template/${var.template.vmdk_file_name}"
+  destination_file   = "/${var.template.template_name}-template/${var.template.vmdk_file_name}"
   create_directories = true
 }
 
 resource "vsphere_virtual_machine" "template" {
   depends_on       = [ resource.vsphere_file.sles_vmdk_upload ]
-  name             = var.template_name
+  name             = var.template.template_name
   host_system_id   = module.get_ids.vsphere_ids.vsphere_host_id
   resource_pool_id = module.get_ids.vsphere_ids.resource_pool_id  
   datastore_id     = module.get_ids.vsphere_ids.datastore_id
@@ -54,7 +54,7 @@ resource "vsphere_virtual_machine" "template" {
     label              = "disk0"
     attach             = "true"
     datastore_id       = module.get_ids.vsphere_ids.datastore_id
-    path               = "/${var.template_name}-template/${var.template.vmdk_file_name}"
+    path               = "/${var.template.template_name}-template/${var.template.vmdk_file_name}"
   }
   guest_id = "sles12_64Guest"
   firmware = "efi" # efi/bios

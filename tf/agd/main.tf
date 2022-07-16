@@ -14,7 +14,7 @@ module "get_ids" {
 ## Template data
 
 data "vsphere_virtual_machine" "template" {
-  name          = "${var.template_name}"
+  name          = "${var.template.template_name}"
   datacenter_id = module.get_ids.vsphere_ids.datacenter_id
 }
 
@@ -53,7 +53,7 @@ module "agd" {
     memory           = 2048
     metadata         = data.template_file.metadata_agd.rendered
     userdata         = data.template_file.userdata_agd.rendered
-    network_map      = [ module.get_ids.vsphere_ids.wan_id, module.get_ids.vsphere_ids.wan_id ]
+    network_map      = [ module.get_ids.vsphere_ids.wan_id ]
   }
 }
 

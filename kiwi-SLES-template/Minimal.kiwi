@@ -134,6 +134,10 @@
         <package name="cloud-init" />
         <package name="cloud-init-config-suse" />
         <package name="clone-master-clean-up" />
+    <!--ZIP for Terraform archive provider-->
+        <package name="zip" />
+        <package name="unzip" />
+  
     </packages>
 
     <packages type="bootstrap">

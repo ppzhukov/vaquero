@@ -64,9 +64,9 @@ data template_file "userdata_agd" {
   vars = {
     username                   = var.nodes_settings.username
     ssh_public_key             = var.ssh_public_key
-    rmt_server_cnf             = data.template_file.rmt_server_cnf.rendered
-    rmt_init                   = data.template_file.rmt_init.rendered
-    rmt_conf                   = data.template_file.rmt_conf.rendered
+    rmt_server_cnf             = base64encode(data.template_file.rmt_server_cnf.rendered)
+    rmt_init                   = base64encode(data.template_file.rmt_init.rendered)
+    rmt_conf                   = base64encode(data.template_file.rmt_conf.rendered)
     registration_cmd           = local.registration_cmd
     runcmd_agd                 = local.runcmd_agd
     salt_zip                   = filebase64("${path.module}/files/salt.zip")
@@ -76,10 +76,10 @@ data template_file "userdata_agd" {
 data template_file "metadata_agd" {
   template = file("${path.module}/templates/metadata.yaml")
   vars = {
-    hostname    = local.hostname
+    hostname    = var.agd.hostname
     ip_address  = var.agd.ip
     netmask     = var.agd.netmask
-    dhcp4       = var.agd.dhcp4
+    gateway     = var.agd.gateway
     nameservers = jsonencode(var.agd.nameservers)
   }
 }
