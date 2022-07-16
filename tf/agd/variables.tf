@@ -70,6 +70,10 @@ variable "agd" {
   type = object({
     password  = string
     hostname  = string
+    dhcp4    = string
+    ip       = string
+    netmask  = string
+    nameservers = list(string)
   })
   sensitive   = true
 }
