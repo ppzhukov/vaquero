@@ -12,3 +12,5 @@
 **/*_override.tf
 **/*_override.tf.json
 **/*.zip
+**/id_rsa
+**/id_rsa.pub

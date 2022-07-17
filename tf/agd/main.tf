@@ -57,3 +57,19 @@ module "agd" {
   }
 }
 
+resource "null_resource" "wait_cloud_init" {
+  depends_on = [module.agd]
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = var.agd.ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
