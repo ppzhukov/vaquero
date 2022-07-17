@@ -46,7 +46,7 @@ module "agd" {
   stend_environment = local.stend_environment
   
   vm_parameters = {
-    name             = "agd"
+    name             = var.agd.hostname
     enable_wan       = true
     disk_size        = 240
     cpu              = 2
@@ -60,16 +60,15 @@ module "agd" {
 resource "null_resource" "wait_cloud_init" {
   depends_on = [module.agd]
   connection {
-    type     = "ssh"
-    user     = "root"
-    password = var.root_password
-    host     = var.agd.ip
+    type        = "ssh"
+    user        = "${var.nodes_settings.username}"
+    private_key = "${var.tf_ssh_private_key}"
+    host        = var.agd.ip
   }
 
   provisioner "remote-exec" {
     inline = [
-      "puppet apply",
-      "consul join ${aws_instance.web.private_ip}",
+            "sudo cloud-init status --wait",
     ]
   }
 }

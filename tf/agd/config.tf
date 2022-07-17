@@ -63,6 +63,7 @@ data template_file "userdata_agd" {
   vars = {
     username                   = var.nodes_settings.username
     ssh_public_key             = var.ssh_public_key
+    tf_ssh_public_key          = var.tf_ssh_public_key
     rmt_server_cnf             = base64encode(data.template_file.rmt_server_cnf.rendered)
     rmt_sls                    = base64encode(data.template_file.rmt_sls.rendered)
     rmt_conf                   = base64encode(data.template_file.rmt_conf.rendered)
