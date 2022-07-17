@@ -15,10 +15,9 @@ data template_file "rmt_server_cnf" {
     ip_address  = var.agd.ip
   }
 }
-data template_file "rmt_init" {
-  template = file("${path.module}/templates/rmt-init.sh")
+data template_file "rmt_sls" {
+  template = file("${path.module}/templates/rmt.sls")
   vars = {
-    hostname    = var.agd.hostname
     password    = var.agd.password
   }
 }
@@ -65,7 +64,7 @@ data template_file "userdata_agd" {
     username                   = var.nodes_settings.username
     ssh_public_key             = var.ssh_public_key
     rmt_server_cnf             = base64encode(data.template_file.rmt_server_cnf.rendered)
-    rmt_init                   = base64encode(data.template_file.rmt_init.rendered)
+    rmt_sls                    = base64encode(data.template_file.rmt_sls.rendered)
     rmt_conf                   = base64encode(data.template_file.rmt_conf.rendered)
     registration_cmd           = local.registration_cmd
     runcmd_agd                 = local.runcmd_agd
