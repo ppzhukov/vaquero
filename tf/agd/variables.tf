@@ -45,6 +45,18 @@ variable "ssh_public_key" {
   sensitive = true
 }
 
+variable "tf_ssh_public_key" {
+  type    = string
+  default = ""
+  sensitive = true
+}
+
+variable "tf_ssh_private_key" {
+  type    = string
+  default = ""
+  sensitive = true
+}
+
 variable "mirroring_credentials" {
   type = object({
     user = string
