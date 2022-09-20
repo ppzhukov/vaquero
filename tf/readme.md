@@ -66,30 +66,3 @@ The configuration is done through Terraform variables. Example *tfvars* file is 
 |wan|Name of the Distributed Virtual Switch for WAN|DPG_Zhukov_Lab_VLAN13|
 |folder|Name of the Folder|PZhukov/pzhukov-rancher-tf|
 
-
-### Deploying tagging lambda
-
-To deploy the tagging lambda, 
-* Export vSphere credentials into environment variables:
-```bash
-export 
-```
-* Apply Terraform configuration with tagging lambda:
-```bash
-cd SLEdsadada-TemplatE !~!!!!!!!
-terraform init
-terraform apply --var-file ../example.tfvars
-```
-
-### Deleting tagging lambda
-
-To delete tagging lambda, 
-* Export AWS credentials into environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
-* Destroy Terraform configuration:
-```bash
-terraform destroy --var-file example.tfvars
-```
-
-```bash
-terraform destroy --var-file example.tfvars
-```
