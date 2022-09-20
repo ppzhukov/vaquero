@@ -4,11 +4,13 @@
 
 
 3. Export secret variable
+```bash
   export TF_VAR_ssh_public_key="ssh-rsa base64_data user@host-name"
   export TF_VAR_registry='{ key="AA-BB-CC", email="my_name@my-domain.com" }'
   export TF_VAR_vsphere_credetial='{ user="administrator", password="password", server="vsphere.stend.test" }'
   export TF_VAR_mirroring_credentials='{ user="12345678", password="secret"}'
   export TF_VAR_password="linux"
+```
 4. Run
 ```bash
 cd ./tf
