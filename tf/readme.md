@@ -1,6 +1,6 @@
 
 1. Install Terraform cli
-2. Configure Terraform Mirror for Terraform Registry if you need/.
+2. Configure Terraform Mirror for Terraform Registry if you need.
 
 
 3. Export secret variable
