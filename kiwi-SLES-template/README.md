@@ -9,8 +9,11 @@ sudo zypper install -y python3-kiwi
 openssl passwd -1 -salt 'suse' suse1234
 ```
 and change Minimal.kiwi
+
 3. Download SUSE SLES 15SP4 full iso.
+```
 SLE-15-SP4-Full-x86_64-GM-Media1.iso
+```
 4. Make directory /media/suse
 ```bash
 sudo mkdir -p /media/suse
