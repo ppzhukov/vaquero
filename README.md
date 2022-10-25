@@ -6,6 +6,7 @@ Creating VMware vSphere environment, VM template, and VMs to run SUSE Rancher.
 - Run the kiwi and crete a template.
 - Add the template to vSphere
 - Add AGD (Air-Gap Data, RMT + Registry) node to vSphere
+- Add and mirror products at AGD Server
 - Change registry address in tf/rancher/salt/salt/registration.sls
 - Add Rancher nodes to vSphere
 
