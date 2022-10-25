@@ -28,6 +28,12 @@ terraform -chdir=./agd init
 terraform -chdir=./agd plan -var-file ../your.tfvars
 terraform -chdir=./agd apply -auto-approve -var-file ../your.tfvars
 ```
+7. Connect to ADG and run
+```bash
+rmt-cli sync
+```
+8. Add products to RMT and mirroring repositories.
+
 
 
 
