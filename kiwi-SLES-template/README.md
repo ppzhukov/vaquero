@@ -5,7 +5,7 @@ Use current file or:
 sudo SUSEConnect --product sle-module-desktop-applications/15.4/x86_64
 sudo SUSEConnect --product sle-module-development-tools/15.4/x86_64
 sudo zypper install -y python3-kiwi
-zypper in -y kiwi-templates-Minimal
+sudo zypper in -y kiwi-templates-Minimal
 ```
 4. Download SUSE SLES 15SP4 full iso.
 ```
