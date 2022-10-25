@@ -5,6 +5,8 @@
 
 3. Export secret variable
 ```bash
+  export TF_VAR_tf_ssh_public_key="Generated SSH public key for connect TF"
+  export TF_VAR_tf_ssh_private_key="Generated SSH private key for connect TF"
   export TF_VAR_ssh_public_key="ssh-rsa base64_data user@host-name"
   export TF_VAR_registry='{ key="AA-BB-CC", email="my_name@my-domain.com" }'
   export TF_VAR_vsphere_credetial='{ user="administrator", password="password", server="vsphere.stend.test" }'
